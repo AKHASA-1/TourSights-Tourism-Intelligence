@@ -1,36 +1,52 @@
-# 💊 PharmaSync | Vital Inventory
-**Data-Driven Healthcare Supply Chain Optimization**
+# 🌍 TourSights - Tourism Intelligence 📊
 
-![DEPI Project](https://img.shields.io/badge/Project-DEPI_Graduation-blue)
-![Domain](https://img.shields.io/badge/Domain-Pharmaceutical_Analytics-success)
-![Tech](https://img.shields.io/badge/Tech-Python_%7C_SQL_%7C_PowerBI-orange)
-
-## 📌 The Pitch
-In the Egyptian pharmaceutical market, pharmacies operate in information silos. This creates a dual crisis: a pharmacy in one district destroys thousands of pounds worth of expired critical medication, while another pharmacy just miles away loses patients due to severe shortages of that exact drug. 
-
-**PharmaSync** is not just a dashboard; it is a **Prescriptive Analytics Engine**. By ingesting fragmented POS data, it calculates the "burn rate" of every drug, predicts exact stockout dates, and prescribes dynamic inter-pharmacy inventory transfers to eliminate financial waste and save lives.
-
-## 🚨 The Problem
-- **Information Asymmetry:** Lack of visibility across pharmacy branches.
-- **Financial Bleed:** Millions in EGP lost annually to dead stock and expired medications (Over-stocking).
-- **Patient Risk:** Chronic medication unavailability due to poor localized distribution (Under-stocking).
-
-## 💡 The Solution (Core Analytics)
-PharmaSync leverages multi-level data analytics to cure the supply chain:
-1. **Descriptive (The Expiry Radar):** Visualizes total EGP capital at risk of expiring within 30/60/90 days.
-2. **Predictive (Stockout Prognosis):** Time-series analysis to calculate the daily burn rate and predict exactly *when* a high-demand drug will run out.
-3. **Prescriptive (Dose Routing Algorithm):** The optimization engine. It automatically matches a pharmacy holding near-expiry idle stock with a pharmacy facing an imminent stockout, generating a precise "Transfer Action Plan".
-
-## 🛠️ Technology Stack
-- **Data Processing & Cleaning:** Python (Pandas, NumPy)
-- **Predictive Modeling:** Scikit-Learn / Statsmodels (Time-Series Forecasting)
-- **Database / Data Warehouse:** SQL Server / PostgreSQL
-- **Business Intelligence & Visualization:** Power BI (Advanced DAX & Star Schema Data Modeling)
-
-## 📊 Measurable Business Impact (ROI)
-- **Waste Reduction:** Prevents capital loss by re-routing near-expiry drugs.
-- **Revenue Protection:** Minimizes lost sales by proactively addressing stockouts.
-- **Working Capital Optimization:** Unlocks cash trapped in dead stock.
+> **Shifting the focus from Tourist Volume to Tourist Value through Data-Driven Micro-Experience Analytics.**
 
 ---
-*Built with passion by [Your Team Name] for the Digital Egypt Pioneers Initiative (DEPI).*
+
+## 📌 Overview
+**TourSights** is a comprehensive Business Intelligence (BI) system designed for decision-makers in the tourism sector. It captures and analyzes the "micro-experiences" of tourists within destinations to identify friction points and operational bottlenecks. By translating these raw experiences into actionable strategic insights, the system helps authorities maximize economic yield, improve service quality, and ensure higher return rates.
+
+---
+
+## ⚠️ The Problem
+Current destination management relies heavily on **Volume** (e.g., total tourist arrivals) while often overlooking **Quality**. This gap leads to:
+1. **Operational Blindness:** The inability to track and resolve the daily, ground-level challenges faced by individual tourists, such as random pricing, harassment, or logistical hurdles.
+2. **Revenue Leakage:** Hidden negative experiences drastically lower destination loyalty, reducing both repeat visits and average daily spending.
+
+---
+
+## 💡 The Solution
+An end-to-end data pipeline that captures the authentic "Voice of the Tourist" from public platforms, processes it, and visualizes it for decision-makers.
+
+1. **Extraction:** Scraping authentic tourist reviews, ratings, and experiences from public platforms using `Python`.
+2. **Processing & NLP:** Cleaning the textual data and classifying it to extract the most frequent pain points through sentiment and keyword analysis.
+3. **Visualization & Action:** Linking these insights with geographical data to build an interactive `Power BI` dashboard that features a "friction heatmap" and provides highly targeted recommendations.
+
+---
+
+## 🛠️ Tech Stack
+- **Data Scraping:** `Python` (BeautifulSoup / Selenium)
+- **Data Cleaning & Manipulation:** `Pandas`, `NumPy`
+- **Natural Language Processing (NLP):** `NLTK` / `TextBlob` (Sentiment & Keyword Extraction)
+- **Data Visualization & Modeling:** `Power BI` (DAX, Power Query)
+
+---
+
+## 🚀 Key Features
+- 🗺️ **Friction Heatmaps:** Precise geographical mapping of zones with high complaint densities (e.g., specific archaeological sites or transport hubs).
+- 🧠 **Sentiment Trend Analysis:** Continuous tracking of tourist satisfaction over time based on the contextual tone of their reviews.
+- 🎯 **Actionable Recommendations:** Automatically clustering unstructured complaints into actionable categories (e.g., Transportation, Security, Pricing) to direct the relevant authorities instantly.
+
+---
+
+## ⚙️ Data Pipeline Architecture
+1. **Web Scraper Script** ➡️ Extracts reviews, ratings, dates, and locations.
+2. **Data Preprocessing Script** ➡️ Removes noise, applies sentiment labels (Positive, Neutral, Negative), and extracts root-cause keywords.
+3. **Storage** ➡️ Stores structured data in a Relational Database or CSV files.
+4. **Power BI Dashboard** ➡️ Imports the dataset, builds the relational data model, and renders the interactive user interface.
+
+---
+
+## 🤝 Contributing
+This project is currently in its MVP phase. Contributions to enhance the NLP models—especially extending support for multi-language sentiment analysis (e.g., German, Russian, Italian, Spanish)—are highly welcome.
