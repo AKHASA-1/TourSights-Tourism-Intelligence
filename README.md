@@ -1,534 +1,376 @@
 # 🌍 TourSights — Tourism Intelligence
 
-> **From Tourist Volume to Visitor Experience: Turning Public Reviews into Actionable Tourism Insights.**
+> **Shifting the Focus from Tourist Volume to Tourist Value through Data-Driven Micro-Experience Analytics.**
 
-TourSights is an academic Business Intelligence (BI) proof of concept that analyzes publicly available visitor reviews of selected Egyptian museums and archaeological sites.
+TourSights is an academic **Business Intelligence and Natural Language Processing proof of concept** that turns publicly available Google Maps visitor reviews of selected Egyptian museums and archaeological sites into structured, comparable tourism insights.
 
-By combining structured data preparation, sentiment analysis, visitor-experience categorization, and interactive Power BI dashboards, TourSights aims to help tourism decision-makers understand what visitors appreciate, what frustrates them, and which recurring issues deserve further investigation.
+The project combines data collection, Python-based data preparation, multilingual sentiment analysis, aspect-based experience categorization, and an interactive Power BI Desktop report. Its goal is to help decision-makers explore what visitors appreciate, what frustrates them, and which recurring experience issues may deserve further investigation.
 
-The project focuses on **the quality of visitor experiences, not just the number of tourists or their overall star ratings.**
+**TourSights focuses on the quality of individual visitor experiences—not only tourist volume or overall star ratings.**
+
+> **Project status:** Academic prototype. It is not a deployed national monitoring platform, an official government system, or a commercial product.
 
 ---
 
 ## 📌 Project Overview
 
-Tourists share detailed experiences on platforms such as Tripadvisor and Google Maps. These reviews contain valuable information about queues, pricing, cleanliness, accessibility, staff behavior, facilities, and the overall historical and cultural experience.
+Online reviews contain detailed accounts of visitor experiences: ticket prices, queues, cleanliness, accessibility, staff and vendor behaviour, facilities, and the historical or cultural experience. However, this information is unstructured, multilingual, and difficult to compare manually across destinations.
 
-However, this information is unstructured and distributed across different platforms and destinations. Overall ratings alone cannot explain why visitors are satisfied or dissatisfied.
+TourSights processes Google Maps reviews into an analytical data model and makes the resulting information explorable through Power BI Desktop.
 
-**TourSights transforms public visitor reviews into a structured analytical dataset and presents the results through an interactive Power BI Desktop report.**
-
-The primary intended stakeholder is the **Egyptian Ministry of Tourism and Antiquities**, with destination managers and tourism analysts as secondary beneficiaries.
-
-TourSights is currently an academic prototype, not a deployed national monitoring platform or a commercial product.
+The **primary intended stakeholder** is the Egyptian Ministry of Tourism and Antiquities. Destination managers, tourism analysts, and researchers are potential secondary beneficiaries. This identifies the project's intended audience; it does not imply institutional adoption, approval, or endorsement.
 
 ---
 
 ## 🎯 Problem Statement
 
-Tourism performance cannot be fully understood through visitor numbers and average ratings alone.
+Visitor numbers and average ratings do not fully explain the quality of a destination experience. Recurring friction points can remain hidden in thousands of individual reviews.
 
-Recurring problems may remain hidden within thousands of individual reviews, making it difficult to:
+TourSights addresses this analytical gap by helping users:
 
-* Identify frequently mentioned visitor complaints.
-* Understand which aspects of a destination are associated with negative experiences.
-* Recognize positive aspects that should be maintained or enhanced.
-* Compare destinations fairly when their review volumes differ.
-* Examine changes in visitor feedback over time.
-* Support decisions with traceable evidence rather than isolated comments.
+- Explore recurring positive and negative visitor experiences.
+- Identify which experience aspects are discussed in reviews.
+- Compare destinations using clearly defined measures and denominators.
+- Examine sentiment and aspect patterns over time where dates allow.
+- Trace aggregated findings back to review-level evidence.
+- Distinguish observed review patterns from assumptions or unsupported claims.
 
-TourSights addresses this analytical gap by organizing review data and providing comparable indicators of visitor experience.
-
----
-
-## 💡 Proposed Solution
-
-TourSights follows a data pipeline that transforms public reviews into structured, interpretable insights.
-
-### 1. Data Collection
-
-Collect visitor reviews from supported public platforms using data extraction tools.
-
-Initial collection uses Outscraper, with Apify Actors planned for additional feasibility testing.
-
-### 2. Data Preparation
-
-Use Power Query to standardize column names, data types, dates, ratings, destination names, and source labels.
-
-Identify missing values, inspect data quality, and distinguish technical duplicates from independent reviews that happen to contain similar complaints.
-
-### 3. Sentiment Analysis and Experience Categorization
-
-As an analytical extension, evaluate a pretrained sentiment model and combine it with transparent keyword-based rules to classify visitor feedback.
-
-The proposed sentiment labels are:
-
-* Positive
-* Negative
-* Neutral
-* Mixed, where supported
-
-Reviews may also be categorized into visitor-experience aspects such as pricing, cleanliness, queues, transportation, staff, facilities, and safety.
-
-The classification approach will be validated against a manually labeled sample. If the NLP component proves unreliable or impractical, the core Power BI report will proceed using descriptive analytics and a simpler documented approach.
-
-### 4. Business Intelligence and Visualization
-
-Build an interactive Power BI Desktop report using a structured data model, DAX measures, filters, and destination-specific pages.
-
-The report will help users explore visitor feedback, compare destinations using appropriately normalized indicators, and investigate the evidence behind aggregated results.
+The analysis is intended to support investigation and informed discussion—not to replace expert judgment or automatically prescribe interventions.
 
 ---
 
-## 📊 Key Analytical Capabilities
+## 🏛️ Destination Scope
 
-The following capabilities describe the planned analytical scope. Their final availability depends on implementation, data coverage, and validation.
+The current analytical dataset covers five Egyptian destinations:
 
-### 🗺️ Destination Comparison
+| Destination | Dataset label | Destination type |
+|---|---|---|
+| Abu Simbel Temples | Abu Simbel | Temple complex |
+| Karnak Temple Complex | Karnak | Temple complex |
+| Giza Pyramids Complex (Pyramids of Giza & Sphinx) | Giza | Pyramids and necropolis |
+| Valley of the Kings | Valley of Kings | Royal necropolis |
+| Grand Egyptian Museum | GEM | Museum |
 
-Compare selected Egyptian museums and archaeological sites using review volumes, ratings, sentiment distributions, and visitor-experience indicators.
-
-Comparisons will account for differences in sample sizes rather than relying on raw complaint counts alone.
-
-### 🧠 Sentiment Analysis
-
-Examine the distribution of positive, negative, and neutral feedback, with mixed sentiment included if the selected approach supports it.
-
-Model performance will be evaluated using a manually labeled sample before accuracy claims are made.
-
-### 🔎 Visitor-Experience Categorization
-
-Organize reviews into predefined aspects of the visitor experience, including:
-
-* Price and Value for Money
-* Cleanliness
-* Queues and Crowding
-* Accessibility and Transportation
-* Staff and Tour Guides
-* Vendor Behavior, Harassment, and Scams
-* Facilities and Visitor Services
-* Signage and Visitor Information
-* Safety and Security
-* Historical and Cultural Experience
-* Museum Exhibitions and Organization
-
-Categories will be refined according to the actual collected data.
-
-### 📈 Trend Analysis
-
-Examine changes in review sentiment and recurring complaints over time where publication dates and data coverage are sufficient.
-
-### ⭐ Positive Experience Analysis
-
-Identify aspects frequently associated with positive visitor feedback, helping ensure that analysis considers destination strengths as well as problems.
-
-### 📋 Evidence-Based Prioritization
-
-Explore frequently mentioned issues using explicit counts, denominators, and normalized indicators.
-
-Any proposed priority indicator will be documented as an analytical aid, not an official tourism risk rating or an automatically generated operational decision.
-
-### 🔍 Review-Level Investigation
-
-Where the available fields and report implementation permit, users will be able to navigate from summary visuals to selected underlying reviews.
+The dataset's destination dimension contains five destination records. Other locations appearing in archived or backup source files are not part of the current five-destination analytical scope.
 
 ---
 
-## 🏛️ Initial Destination Scope
+## 📊 Dataset Snapshot
 
-The project targets approximately five Egyptian museums and archaeological sites.
+The current `Main Dataset.xlsx` contains the consolidated analytical model and supporting documentation/validation sheets.
 
-The following destinations are candidates, not a confirmed final selection:
+| Measure | Current value |
+|---|---:|
+| Destinations | 5 |
+| Review records (`FactReviews`) | 25,398 |
+| Reviews containing text | 11,418 |
+| Reviews without text | 13,980 |
+| Review-aspect records (`FactReviewAspects`) | 25,979 |
+| Distinct reviews represented in the aspect table | 11,023 |
+| Defined experience aspects | 14 |
+| Arabic-language text reviews | 1,612 |
 
-| Destination                         | Current Status                     |
-| ----------------------------------- | ---------------------------------- |
-| The Pyramids of Giza and the Sphinx | Pilot data collected               |
-| Grand Egyptian Museum               | Candidate; data collection pending |
-| Karnak Temple Complex               | Candidate; data collection pending |
-| Valley of the Kings                 | Candidate; data collection pending |
-| Abu Simbel Temples                  | Candidate; data collection pending |
+**How to read these figures**
 
-The final destinations will be selected according to data availability, data quality, analytical relevance, and the remaining implementation time.
-
-The project will first assess a broader pool of approximately 8–10 candidate destinations and conduct feasibility tests on a smaller subset.
+- A review can be associated with more than one aspect. Therefore, aspect-record counts are not unique-review counts.
+- Not every text review receives an aspect assignment. Reviews without a detected specific aspect remain in the review-level fact table.
+- Star-only reviews are retained as review records but do not provide text for sentiment or aspect analysis.
+- These are dataset snapshot counts, not estimates of all visitors or all reviews published about the destinations.
 
 ---
 
-## 📂 Data Sources and Current Progress
+## 🗺️ Data Source and Collection
 
-Two initial Outscraper exports were available as of **19 October 2026**.
+**Current review platform: Google Maps only.**
 
-| Review Platform | Destination             | Raw Reviews Extracted | Collection Tool                        |
-| --------------- | ----------------------- | --------------------: | -------------------------------------- |
-| Tripadvisor     | The Pyramids of Giza    |                   500 | Outscraper                             |
-| Google Maps     | Giza Necropolis         |                   500 | Outscraper                             |
-| Tripadvisor     | Additional destinations |               Pending | Outscraper / Apify feasibility testing |
-| Google Maps     | Additional destinations |               Pending | Subject to feasibility                 |
+The project uses Google Maps visitor reviews to focus on individual visitor experiences, including visits that may not be part of an organized tour or packaged activity.
 
-**Important:** The initial figures represent raw extraction counts, not the final number of usable reviews. Data cleaning, quality checks, and duplicate handling remain necessary.
+The source workbooks were collected using the **Apify Google Maps Reviews Scraper**. The Python processing pipeline consumes five destination-specific Excel workbooks. The archive may also contain backup or unused location files; those should not be confused with the five destinations in the current analytical model.
 
-Apify is planned for small feasibility tests, particularly its Tripadvisor Reviews Actor. No Apify collection run had been completed at the time of the initial project report.
+Collection tools and platform access are subject to their respective terms, technical limits, and usage allowances. The project does not claim complete coverage of all reviews or all visitors.
 
-Additional collection depends on source availability, tool limitations, and available free usage allowances.
+---
 
-### Data Preparation Principles
+## 🔄 Analytical Workflow
 
-The project follows several data-quality principles:
+```text
+Google Maps Public Reviews
+          |
+          v
+Apify Google Maps Reviews Scraper
+          |
+          v
+Destination-Specific Excel Workbooks
+          |
+          v
+Python Processing Pipeline
+  - Load and standardize source fields
+  - Clean and normalize review text
+  - Build destination and date dimensions
+  - Detect review language
+  - Apply sentiment classification
+  - Apply aspect-based categorization
+  - Generate data-quality flags
+  - Run integrity checks
+          |
+          v
+Structured Analytical Tables
+          |
+          v
+Main Dataset.xlsx
+          |
+          v
+Power BI Desktop
+  - Data model and relationships
+  - DAX measures
+  - Interactive report pages
+          |
+          v
+Exploration of Visitor-Experience Insights
+```
 
-* Preserve untouched copies of the original source files.
-* Standardize fields across datasets where possible.
-* Document missing fields and source-specific differences.
-* Remove or flag demonstrable technical duplicates.
-* Retain independent reviews even when their wording is similar.
-* Report actual usable sample sizes and relevant limitations.
-* Avoid making unsupported claims when dates, ratings, or other fields are unavailable.
+The Python pipeline is implemented in the repository's `.py` source file and Jupyter notebook. The Excel workbook also contains supporting documentation, validation, gold-label, and insights sheets. Not every workbook sheet is generated by the Python export step.
+
+---
+
+## 🧠 NLP and Aspect-Based Analysis
+
+TourSights uses a rule-based and hybrid text-analysis pipeline designed for the review data available in the project.
+
+### Sentiment Analysis
+
+The pipeline assigns review-level and text-level sentiment information. The current analytical labels include:
+
+- Positive
+- Negative
+- Neutral
+- Mixed, where applicable in the validation/reference material
+- No Text for reviews without review text
+
+The implementation includes English sentiment vocabulary and decision rules, as well as a dedicated Arabic hybrid layer. Sentiment outputs are analytical classifications and may contain errors; they should not be treated as ground truth.
+
+### Aspect-Based Experience Categorization
+
+The current model defines 14 visitor-experience aspects. They cover themes such as:
+
+- Crowding and Queues
+- Pricing and Value
+- Staff and Guides
+- Cleanliness
+- Accessibility
+- Historical Experience
+- Ticketing and Booking
+- Other defined experience categories documented in `DimAspect`
+
+A single review may mention multiple aspects. The aspect table therefore stores review–aspect records rather than one row per review.
+
+### Validation
+
+The workbook includes manually labelled reference samples and validation sheets for sentiment and aspect analysis. The current gold-label material documents **360 sentiment-labelled reviews** and **192 aspect labels**. Consult the `NLP_Accuracy`, `Gold_Sentiment`, and `Gold_Aspects` sheets for the evaluation setup and measured results.
+
+The Arabic hybrid comparison sheet records changes between pipeline versions for Arabic-language reviews. These comparisons are documented separately from the general gold-sample evaluation.
+
+---
+
+## 🗃️ Data Model
+
+The analytical model is organized around two fact tables and three dimensions.
+
+### Fact Tables
+
+**`FactReviews`** — one record per review. It includes review identifiers, destination and date keys, rating, original and English review text where available, sentiment fields, language, and data-quality attributes.
+
+**`FactReviewAspects`** — review–aspect associations. A review can have multiple rows when multiple aspects are detected. It includes the review reference, aspect key, aspect sentiment, and supporting evidence fields.
+
+### Dimension Tables
+
+- **`DimDestination`** — destination names, types, and geographic attributes.
+- **`DimDate`** — calendar attributes for date-based analysis.
+- **`DimAspect`** — aspect definitions, groups, and detection-rule descriptions.
+
+The model contains five core analytical tables. The workbook additionally includes documentation and QA sheets. See `Data_Dictionary` and `PowerBI_Guide` in `Main Dataset.xlsx` for field definitions and model guidance.
+
+---
+
+## 📈 Power BI Report
+
+Power BI Desktop is the reporting and exploration layer. The analytical model is designed to support:
+
+- Overall review and destination summaries.
+- Sentiment distribution and comparison.
+- Aspect-level positive and negative experience analysis.
+- Destination-specific exploration.
+- Time-based analysis where date coverage is sufficient.
+- Review-level investigation and supporting evidence, where enabled in the report.
+
+Interpretation must account for review sample sizes, missing text, platform bias, and the distinction between review counts and aspect-mention counts.
+
+> The `.pbix` report is a separate artifact from the Python pipeline and Excel dataset. Dashboard visuals, interactions, and DAX measures should be assessed from the actual Power BI file.
 
 ---
 
 ## 🛠️ Technology Stack
 
-| Technology                | Purpose                                                           |
-| ------------------------- | ----------------------------------------------------------------- |
-| Outscraper                | Initial collection of Tripadvisor and Google Maps reviews         |
-| Apify                     | Planned additional source and collection-tool feasibility testing |
-| Microsoft Excel           | Data inspection, annotation, and intermediate analysis            |
-| Power Query               | Primary tool for structured data cleaning and transformation      |
-| Python                    | Optional supplementary processing and NLP                         |
-| Hugging Face Transformers | Candidate framework for pretrained sentiment models               |
-| scikit-learn              | Evaluation metrics and model validation                           |
-| Power BI Desktop          | Data modeling, interactive reports, and visualization             |
-| DAX                       | Measures and analytical calculations                              |
-| CSV / Excel               | Data exchange between processing stages                           |
-| Google Colab or similar   | Optional environment for NLP experiments                          |
+| Technology | Role |
+|---|---|
+| Google Maps | Public review source |
+| Apify Google Maps Reviews Scraper | Review collection |
+| Python | Data processing and NLP pipeline |
+| pandas / NumPy | Data manipulation |
+| scikit-learn | Supporting analytical and evaluation utilities |
+| openpyxl | Excel workbook input/output |
+| Jupyter Notebook | Interactive pipeline development and review |
+| Microsoft Excel | Analytical dataset, validation, and documentation workbook |
+| Power BI Desktop | Data model, DAX measures, and interactive reporting |
 
-The project prioritizes free tools and available free usage allowances. Third-party collection services may impose usage limits or charges beyond their free allowances.
+The pipeline uses Python libraries listed in its import statements. See the source file for the exact implementation and configuration.
 
 ---
 
-## ⚙️ System Architecture
+## 🚀 Running the Python Pipeline
 
-The proposed analytical workflow is:
+### 1. Requirements
 
-```text
-Public Visitor Reviews
-        |
-        v
-Outscraper Exports
-(CSV / Excel)
-        |
-        v
-Raw Data Storage
-        |
-        v
-Power Query
-Cleaning & Standardization
-        |
-        v
-Data Quality Validation
-        |
-        +----------------------------+
-        |                            |
-        v                            v
-Cleaned Review Dataset       Optional Python NLP
-                                    |
-                                    v
-                           Sentiment Classification
-                           & Aspect Categorization
-                                    |
-                                    v
-                           Enriched Review Dataset
-        |                            |
-        +-------------+--------------+
-                      |
-                      v
-               Power BI Data Model
-                      |
-                      v
-             DAX Measures & KPIs
-                      |
-                      v
-             Interactive Dashboard
-                      |
-                      v
-          Evidence-Based Tourism Insights
+- Python 3.x
+- The five destination source workbooks
+- Required Python packages: `pandas`, `numpy`, `scikit-learn`, and `openpyxl`
+
+Install the core dependencies:
+
+```bash
+pip install pandas numpy scikit-learn openpyxl
 ```
 
-The Python/NLP stage is optional and will be included in the final workflow only to the extent that it can be implemented and validated reliably.
+### 2. Prepare the Input Files
 
-Power Query handles structured table transformations, while advanced language processing is performed separately.
+The script expects the following filenames in the input data directory:
 
----
+```text
+abu_simbel.xlsx
+karnak.xlsx
+giza.xlsx
+valley_of_kings.xlsx
+gem.xlsx
+```
 
-## 🗃️ Proposed Data Model
+Place the five corresponding Google Maps source workbooks in one directory and use these expected filenames. The names in the supplied archive may differ, so check the source files carefully before renaming them.
 
-The Power BI model is planned around review-level and aspect-level data.
+### 3. Configure Paths
 
-### Fact Tables
+The pipeline supports these environment variables:
 
-**FactReviews**
+- `TOURSIGHTS_DATA_DIR` — directory containing the five input workbooks.
+- `TOURSIGHTS_OUTPUT` — output Excel file path.
 
-Contains review-level information, such as:
+Example on Windows PowerShell:
 
-* Review ID
-* Destination
-* Review platform
-* Review text
-* Publication date
-* Rating
-* Language, where available
-* Overall sentiment, if implemented
+```powershell
+$env:TOURSIGHTS_DATA_DIR="C:\TourSights\data"
+$env:TOURSIGHTS_OUTPUT="C:\TourSights\output\TourSights_NLP_Output.xlsx"
+python TourSights_Full_Source_Code_v4.py
+```
 
-**FactReviewAspects**
+If these variables are not set, the script uses the default paths defined in its configuration section. Review that section before running the pipeline.
 
-Contains aspect-level records associated with reviews, where categorization is implemented.
+### 4. Expected Output
 
-Potential fields include:
+The Python export step creates an Excel workbook containing these six sheets:
 
-* Review ID
-* Aspect category
-* Aspect sentiment, where supported
+1. `FactReviews`
+2. `DimDestination`
+3. `DimDate`
+4. `DimAspect`
+5. `FactReviewAspects`
+6. `Run_Info`
 
-A review may mention several aspects. The model must distinguish review counts from aspect-mention counts to avoid double-counting.
-
-### Dimension Tables
-
-The proposed dimensions include:
-
-* `DimDestination`
-* `DimSource`
-* `DimDate`
-* `DimAspect`
-* `DimLanguage`
-
-The final schema will be adapted to the fields actually available in the collected datasets.
+`Main Dataset.xlsx` is the expanded project workbook. It also contains supporting validation, gold-label, findings, insights, recommendations, guide, dictionary, and change-log sheets. Those additional sheets are not all generated by the current Python export step.
 
 ---
 
-## 📊 Planned Power BI Report
+## 🧪 Data Quality and Integrity Checks
 
-The report is designed around an overview page and destination-specific pages.
+The pipeline includes integrity checks for key relationships and analytical outputs, including:
 
-### Overview and Destination Comparison
+- Date-dimension continuity and ordering.
+- Valid review and aspect references.
+- Duplicate review–aspect pair detection.
+- Allowed aspect-sentiment labels.
+- Non-empty evidence for aspect records.
+- Expected aspect-dimension size.
+- Aspect assignment coverage and text-review constraints.
 
-Proposed elements include:
-
-* Total usable reviews
-* Number of destinations represented
-* Sentiment distribution
-* Most frequently mentioned negative aspects
-* Normalized negative rates by destination
-* Positive visitor-experience aspects
-* Trends where date coverage permits
-* Destination, period, source, and language filters where supported
-
-### Destination Pages
-
-Each finalized destination will have a dedicated page containing relevant indicators, including:
-
-* Review count and sample-size information
-* Sentiment distribution
-* Aspect mentions
-* Negative rates by aspect
-* Positive experience indicators
-* Rating summaries
-* Trends where data permits
-* Issue-prioritization indicators
-* Navigation to underlying reviews where feasible
-
-### Data Transparency
-
-The report will document relevant sources, date coverage, metric definitions, and limitations.
-
-The dashboard will be tested to ensure that totals reconcile with the underlying data, percentages use explicit denominators, and comparisons do not rely solely on raw counts.
-
-The dashboard design remains a proposal until implemented and tested.
+The Excel workbook provides additional validation and documentation sheets. For the actual results and statuses, inspect `Validation_Report`, `Findings`, `NLP_Accuracy`, and `Arabic_Hybrid_Check`.
 
 ---
 
-## 🧪 Testing and Validation
+## ⚠️ Limitations
 
-TourSights will evaluate both data quality and analytical reliability.
+- **Review bias:** People who post public reviews are not necessarily representative of all visitors.
+- **Platform scope:** The current dataset uses Google Maps only; results should not be generalized to other platforms without further data.
+- **Language and NLP errors:** Multilingual text, sarcasm, context, spelling variation, negation, and ambiguous wording can affect classification quality.
+- **Aspect coverage:** A review may contain useful feedback without matching any of the predefined aspect rules.
+- **Date coverage:** Trend analysis depends on the dates available and the consistency of the collected data.
+- **Geographical precision:** A review about a destination does not necessarily identify the exact physical location of an issue.
+- **Collection constraints:** Public availability, scraper behaviour, platform changes, and usage limits can affect collection completeness.
+- **Academic scope:** This is a proof of concept, not a production monitoring or decision-automation system.
 
-### Data Quality Checks
-
-* Missing and empty review text
-* Date validity and coverage
-* Rating ranges
-* Field completeness
-* Destination and source mapping
-* Technical duplicates
-* Relevant versus unusable records
-* Actual usable sample sizes
-
-### NLP Validation
-
-If NLP is implemented, model predictions will be compared against a manually labeled sample.
-
-Evaluation may include:
-
-* Precision
-* Recall
-* F1-score
-* Macro F1-score
-* Confusion matrix
-
-The selected metrics will depend on the implemented task and available validation data.
-
-Errors involving negation, sarcasm, mixed sentiment, language variation, and incorrect aspect assignments will be documented where observed.
-
-### Power BI Validation
-
-* Reconcile dashboard totals with source tables.
-* Verify DAX calculations and percentage denominators.
-* Test filters and navigation.
-* Check for double-counting across review and aspect tables.
-* Confirm that missing data is handled transparently.
-* Record actual test outcomes rather than assuming the report is correct.
-
-No model accuracy, final sentiment distribution, or dashboard performance result is claimed before measurement.
+Findings should be interpreted as patterns in the collected reviews, not as definitive measurements of every visitor's experience.
 
 ---
 
-## 🚧 Scope and Limitations
+## 🔮 Future Work
 
-The current project is an academic proof of concept with a limited implementation window and a constrained data-collection budget.
+Potential extensions include:
 
-### Current Scope
+- Improving multilingual sentiment and aspect classification.
+- Expanding and independently reviewing the manually labelled evaluation sample.
+- Comparing automated labels with additional human annotators.
+- Adding further destinations or review sources after feasibility and data-quality checks.
+- Improving review-level evidence navigation and dashboard usability.
+- Establishing a documented refresh and collection process.
+- Validating analytical findings with tourism-domain specialists.
 
-* Approximately five selected Egyptian museums and archaeological sites.
-* Public online review data from feasible sources.
-* Structured cleaning and preparation with Power Query.
-* Optional sentiment and aspect categorization.
-* An interactive Power BI Desktop report.
-* Data-quality checks, validation, testing, and documentation.
-
-### Out of Scope for the Current Version
-
-* Continuous production monitoring.
-* Automatic scheduled data collection and refresh.
-* A fully deployed public web application.
-* Comprehensive coverage of all Egyptian tourist destinations.
-* Training a large language model from scratch.
-* Guaranteed access to every review platform.
-* Automatic prescription of tourism interventions.
-* Precise identification of a physical problem location when the review does not provide sufficient evidence.
-
-### Important Analytical Limitations
-
-**Review representativeness:** Online reviewers are self-selected. Their opinions cannot automatically be generalized to all tourists.
-
-**Platform differences:** Review platforms may differ in their user populations, rating distributions, and available fields.
-
-**NLP uncertainty:** Sentiment and aspect classifications may be wrong, particularly for sarcasm, negation, ambiguous comments, and unsupported languages.
-
-**Data availability:** Some destinations may not provide sufficient usable reviews or reliable dates for trend analysis.
-
-**Geographical precision:** A review about a destination does not necessarily identify the exact physical location where an issue occurred. Geographic claims must remain within what the available evidence supports.
-
-TourSights is intended to support informed investigation, not replace expert judgment or establish causation.
-
----
-
-## 🗓️ Project Timeline
-
-The initial plan covers approximately six weeks, beginning on 19 October 2026.
-
-| Phase                            | Planned Period | Main Deliverable                             |
-| -------------------------------- | -------------- | -------------------------------------------- |
-| Project Planning & Requirements  | Week 1         | Scope, requirements, and source assessment   |
-| Data Collection & Preparation    | Weeks 1–3      | Standardized dataset and quality report      |
-| NLP & Analytical Modeling        | Weeks 3–4      | Validated analytical outputs, if feasible    |
-| Power BI Dashboard & Integration | Weeks 4–6      | Interactive `.pbix` prototype                |
-| Testing & Final Documentation    | Week 6         | Test results, final report, and presentation |
-
-The provisional finalization date is 30 November 2026 and must be confirmed against the official institutional deadline.
-
----
-
-## 🚀 Future Work
-
-Potential improvements beyond the current prototype include:
-
-* Expanding coverage to additional Egyptian destinations.
-* Integrating more verified review sources.
-* Improving multilingual sentiment and aspect classification.
-* Increasing the size of the manually labeled validation dataset.
-* Improving aspect-level classification quality.
-* Introducing scheduled data refresh.
-* Developing more advanced trend and change-detection methods.
-* Validating findings with tourism experts and intended institutional users.
-* Improving dashboard navigation and usability.
-* Integrating verified operational tourism data where available.
-
-These are future possibilities, not completed features.
+These items are proposed extensions, not claims about completed functionality.
 
 ---
 
 ## 👥 Project Team
 
-**Program:** Digital Egypt Youth Initiative
-**Learning Provider:** CLS Learning Solutions
-**Group:** GIZ5_DAT1_S3
-**Project Supervisor:** Eng. Moataz Badran
+**Program:** Digital Egypt Youth Initiative (DEPI)  
+**Learning Provider:** CLS Learning Solutions  
+**Group ID:** GIZ5_DAT1_S3  
+**Supervisor:** Eng. Moataz Badran
 
-TourSights is developed by a four-member engineering and data-focused student team.
-
-The work is organized into four main phases:
-
-1. Project Planning, Research, and Requirements
-2. Data Collection and Data Preparation
-3. NLP, Sentiment Analysis, and Analytical Modeling
-4. Power BI Dashboard, Testing, and Integration
-
-All team members contribute to integration, peer review, testing, and final delivery.
+| Student | Student ID |
+|---|---:|
+| Ahmed Khaled Ahmed Sayed | 21163471 |
+| Ganna Adel Mahmoud Ibrahim | 21075562 |
+| Mohamed Ashraf Hassan Abdulhamid | 21168429 |
+| Malak Mohamed Mohamed Abdelmoneam | 21125342 |
 
 ---
 
-## 📌 Project Status
+## 📄 Project Documents
 
-**Status as of 19 October 2026: Initial planning and pilot data collection completed; implementation in progress.**
+The repository may include the following project artifacts, depending on what is published:
 
-| Component                                 | Status                               |
-| ----------------------------------------- | ------------------------------------ |
-| Project proposal and initial requirements | Documented                           |
-| Initial destination shortlist             | In progress                          |
-| Outscraper pilot collection               | Completed for two Giza-area listings |
-| Expanded data collection                  | Planned                              |
-| Power Query cleaning                      | Planned                              |
-| Data-quality validation                   | Planned                              |
-| Sentiment and aspect categorization       | Planned; subject to validation       |
-| Power BI data model                       | Planned                              |
-| Interactive dashboard                     | Planned                              |
-| Testing and final validation              | Planned                              |
+- `TourSights_Full_Source_Code_v4.py` — main Python processing pipeline.
+- `TourSights_Full_Source_Code_v4.ipynb` — notebook version of the pipeline.
+- `Main Dataset.xlsx` — analytical model and supporting validation/documentation workbook.
+- Power BI `.pbix` file — interactive report, if included in the repository.
+- Technical project report — implementation, methodology, testing, results, and limitations.
 
-The current status reflects the initial project report. Future updates should describe actual implementation progress and measured results.
+Do not publish raw review exports or personal information unless their use and redistribution are permitted by the relevant platform terms and project requirements.
 
 ---
 
-## 🤝 Contributions
+## 📜 Data Use and Attribution
 
-TourSights is currently an academic project in its MVP development phase.
+TourSights processes publicly accessible Google Maps reviews for academic analysis. Public accessibility does not automatically grant unrestricted rights to redistribute review content or derived datasets.
 
-Potential contributions include:
+Users of this repository should review the applicable platform terms, scraper/tool terms, and relevant privacy and data-protection requirements. Avoid republishing personal information or raw review text without an appropriate basis.
 
-* Improving data-quality checks and review standardization.
-* Evaluating pretrained sentiment models on tourism reviews.
-* Refining visitor-experience categories.
-* Improving multilingual text classification.
-* Testing analytical measures and Power BI visualizations.
-* Strengthening validation, documentation, and reproducibility.
-
-Any new functionality should be evaluated against the project's scope, data availability, and validation requirements.
-
----
-
-## 📄 License and Data Usage
-
-No project software license has been specified yet.
-
-Review collection and use must respect the relevant platforms' terms, applicable usage restrictions, and the licenses of any third-party tools or models.
-
-The project should retain source attribution and document collection methods and limitations. Publicly accessible reviews should not automatically be assumed to be unrestricted for every form of reuse or redistribution.
+No software license has been specified for this project. Unless a license is added to the repository, reuse and redistribution permissions should not be assumed.
 
 ---
 
